@@ -43,16 +43,22 @@ class ContactData extends Component {
     }
 
     render () {
+        let form = (
+        <form>
+            <input className={classes.Input} type="text" name="name" placeholder="Your Name" />
+            <input className={classes.Input} type="email" name="email" placeholder="Your Email" />
+            <input className={classes.Input} type="text" name="street" placeholder="Your Street" />
+            <input className={classes.Input} type="text" name="postal" placeholder="Postal Code" />
+            <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
+        </form>
+        );
+        if (this.state.loading) {
+            form = <Spinner />
+        }
         return (
             <div className={classes.ContactData}>
                 <h4>Enter you Contact Info</h4>
-                <form>
-                    <input className={classes.Input} type="text" name="name" placeholder="Your Name" />
-                    <input className={classes.Input} type="email" name="email" placeholder="Your Email" />
-                    <input className={classes.Input} type="text" name="street" placeholder="Your Street" />
-                    <input className={classes.Input} type="text" name="postal" placeholder="Postal Code" />
-                    <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
-                </form>
+                {form}
             </div>
         );
     }
